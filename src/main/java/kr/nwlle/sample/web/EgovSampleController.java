@@ -29,6 +29,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+import kr.nwlle.cmmn.util.CommonUtil;
 import kr.nwlle.sample.service.EgovSampleService;
 import kr.nwlle.sample.vo.SampleDefaultVO;
 import kr.nwlle.sample.vo.SampleVO;
@@ -65,9 +66,6 @@ public class EgovSampleController {
     @Value("${pageSize}")
     private String pageSize;
 
-    @Value("${spring.profiles.active}")
-    private String active;
-
     /** Validator */
     @Resource(name = "beanValidator")
     protected DefaultBeanValidator beanValidator;
@@ -81,7 +79,7 @@ public class EgovSampleController {
      * @return "egovSampleList"
      * @exception Exception
      */
-    @RequestMapping(value = "/egovSampleList.do")
+    @RequestMapping(value = { "/egovSampleList.do", "/egovSampleList.json" })
     public String selectSampleList(@ModelAttribute("searchVO") SampleDefaultVO searchVO, ModelMap model)
             throws Exception {
 
@@ -89,7 +87,7 @@ public class EgovSampleController {
         // searchVO.setPageUnit(propertiesService.getInt("pageUnit"));
         // searchVO.setPageSize(propertiesService.getInt("pageSize"));
 
-        log.error("pageUnit:pageSize:active = {}:{}:active", pageUnit, pageSize, active);
+        log.debug("pageUnit:pageSize:active = {}:{}:{}", pageUnit, pageSize, CommonUtil.getProfile());
 
         searchVO.setPageUnit(10);
         searchVO.setPageSize(10);
