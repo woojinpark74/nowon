@@ -4,7 +4,6 @@ import java.lang.reflect.Array;
 import java.util.List;
 import java.util.Map;
 
-/* eclipse 주석추가해보기 */
 public class MybatisUtil {
 
     @SuppressWarnings("rawtypes")
