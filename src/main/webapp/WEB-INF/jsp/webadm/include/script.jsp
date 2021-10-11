@@ -24,13 +24,7 @@
 	<link type="text/css" rel="stylesheet" href="<c:url value='/css/egovframework/sample.css'/>"/>
 	
 	<script type="text/javascript">		
-		/* $(document).ready(function() {
-			if (location.host.indexOf("nwlle.kr") > 0) {
-			    if (location.protocol.toLowerCase() == "http:") {
-			        location.href = location.href.replace("http:", "https:");
-			    }
-			}
-			
+		$(document).ready(function() {
 			$.ajaxSetup({
 				beforeSend : function() {
 					$(".loading").addClass("active").stop().delay(10000).queue(function(){
@@ -58,5 +52,5 @@
 			if (val.length > maxlength){
 		        $(obj).val(val.slice(0, maxlength));
 		    }    
-		} */
+		}
 	</script>

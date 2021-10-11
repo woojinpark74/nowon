@@ -30,6 +30,7 @@ import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 import kr.nwlle.cmmn.util.CommonUtil;
+import kr.nwlle.cmmn.vo.CommandMap;
 import kr.nwlle.sample.service.EgovSampleService;
 import kr.nwlle.sample.vo.SampleDefaultVO;
 import kr.nwlle.sample.vo.SampleVO;
@@ -49,6 +50,7 @@ import lombok.extern.slf4j.Slf4j;
 // TODO:@slf4j 사용하기
 @Slf4j
 @Controller
+@RequestMapping("/web")
 public class EgovSampleController {
 
     /** EgovSampleService */
@@ -70,6 +72,14 @@ public class EgovSampleController {
     @Resource(name = "beanValidator")
     protected DefaultBeanValidator beanValidator;
 
+    @RequestMapping(value = { "/test.json" })
+    public String selectSampleList(CommandMap commandMap, Model model) {
+        model.asMap().clear();
+        model.addAttribute("commandMap", commandMap);
+        model.addAttribute("sampleVO", new SampleDefaultVO());
+        return "json";
+    }
+
     /**
      * 글 목록을 조회한다. (pageing)
      * 
@@ -80,17 +90,19 @@ public class EgovSampleController {
      * @exception Exception
      */
     @RequestMapping(value = { "/egovSampleList.do", "/egovSampleList.json" })
-    public String selectSampleList(@ModelAttribute("searchVO") SampleDefaultVO searchVO, ModelMap model)
+    public String selectSampleList(@ModelAttribute("searchVO") SampleDefaultVO searchVO, ModelMap model,
+            CommandMap commandMap)
             throws Exception {
 
         /** EgovPropertyService.sample */
         // searchVO.setPageUnit(propertiesService.getInt("pageUnit"));
         // searchVO.setPageSize(propertiesService.getInt("pageSize"));
 
+        log.debug("commandMap = {}", commandMap);
         log.debug("pageUnit:pageSize:active = {}:{}:{}", pageUnit, pageSize, CommonUtil.getProfile());
 
-        searchVO.setPageUnit(10);
-        searchVO.setPageSize(10);
+        searchVO.setPageUnit(Integer.parseInt(pageUnit));
+        searchVO.setPageSize(Integer.parseInt(pageSize));
 
         /** pageing setting */
         PaginationInfo paginationInfo = new PaginationInfo();
@@ -109,7 +121,7 @@ public class EgovSampleController {
         paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);
 
-        return "sample/egovSampleList";
+        return "web/sample/egovSampleList";
     }
 
     /**
@@ -124,7 +136,7 @@ public class EgovSampleController {
     @RequestMapping(value = "/addSample.do", method = RequestMethod.GET)
     public String addSampleView(@ModelAttribute("searchVO") SampleDefaultVO searchVO, Model model) throws Exception {
         model.addAttribute("sampleVO", new SampleVO());
-        return "sample/egovSampleRegister";
+        return "web/sample/egovSampleRegister";
     }
 
     /**
@@ -148,7 +160,7 @@ public class EgovSampleController {
 
         if (bindingResult.hasErrors()) {
             model.addAttribute("sampleVO", sampleVO);
-            return "sample/egovSampleRegister";
+            return "web/sample/egovSampleRegister";
         }
 
         sampleService.insertSample(sampleVO);
@@ -174,7 +186,7 @@ public class EgovSampleController {
         sampleVO.setId(id);
         // 변수명은 CoC 에 따라 sampleVO
         model.addAttribute(selectSample(sampleVO, searchVO));
-        return "sample/egovSampleRegister";
+        return "web/sample/egovSampleRegister";
     }
 
     /**

@@ -6,8 +6,13 @@ import java.util.List;
 public class Constant {
     public static final List<String> LOGGING_PROFILES = Arrays.asList("LOC", "DEV", "STG");
 
+    public static final String ADMIN_ROOT = "/webadm";
+    public static final String USER_ROOT = "/web";
+
     public final static String SECURITY_ROLE_ADMIN = "ROLE_ADMIN";
     public final static String SECURITY_ROLE_USER = "ROLE_USER";
+
+    public static final String USER_SESSION = "user_session";
 
     public final static String SUCCESS = "00"; // 작업결과 성공
     public final static String FAILED = "99"; // 작업결과 실패

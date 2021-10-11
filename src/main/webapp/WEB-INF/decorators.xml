@@ -1,25 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<decorators defaultdir="/WEB-INF/jsp/layout">
-
-    <decorator name="defaultTheme" page="defaultTheme.jsp">
-        <pattern>/</pattern>
+<decorators>
+	<!-- web -->
+    <decorator name="webDefaultTheme" page="/WEB-INF/jsp/web/layout/defaultTheme.jsp">
+        <pattern>/web/*</pattern>
     </decorator>
 
-	<decorator name="egovSampleTheme" page="egovSampleTheme.jsp">
-        <pattern>/egov*.do</pattern>
+	<decorator name="webEgovSampleTheme" page="/WEB-INF/jsp/web/layout/egovSampleTheme.jsp">
+        <pattern>/web/egov*</pattern>
     </decorator>
     
-    <decorator name="gateTheme" page="gateTheme.jsp">
-        <pattern>/gate.do</pattern>
-    </decorator>
-        
-    <decorator name="blankTheme" page="blankTheme.jsp">
+    <decorator name="blankTheme" page="/WEB-INF/jsp/web/layout/blankTheme.jsp">
         <pattern>/modal/*.do</pattern>
     </decorator>
     
-    <decorator name="popUpTheme" page="popUpTheme.jsp">
+    <decorator name="popUpTheme" page="/WEB-INF/jsp/web/layout/popUpTheme.jsp">
         <pattern>/*/*Popup.do</pattern> 
+    </decorator>
+    
+    <!-- webadm -->
+    <decorator name="webadmDefaultTheme" page="/WEB-INF/jsp/webadm/layout/defaultTheme.jsp">
+        <pattern>/webadm/*</pattern>
     </decorator>
     
     <!-- sitemesh 적용 예외 URL을 아래에 추가해 주세요. -->

@@ -15,7 +15,6 @@ package kr.nwlle.sample.vo;
 import java.io.Serializable;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.springframework.beans.factory.annotation.Value;
 
 import lombok.Data;
 
@@ -54,11 +53,9 @@ public class SampleDefaultVO implements Serializable {
     private int pageIndex = 1;
 
     /** 페이지갯수 */
-    @Value("${pageUnit}")
     private int pageUnit = 10;
 
     /** 페이지사이즈 */
-    @Value("${pageSize}")
     private int pageSize = 10;
 
     /** firstIndex */

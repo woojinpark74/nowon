@@ -7,8 +7,6 @@
                 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
                 http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 
-	<mvc:annotation-driven />
-	
 	<!-- scan component -->
     <context:component-scan base-package="kr.nwlle">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
@@ -21,29 +19,35 @@
 	<mvc:resources mapping="/css/**" location="/css/" />
 	<mvc:resources mapping="/js/**" location="/js/" />
      -->
-    <mvc:default-servlet-handler />
+    
+    <!-- CommandMapArgumentResolver -->
+    <mvc:annotation-driven >
+		<mvc:argument-resolvers>
+			<bean class="kr.nwlle.cmmn.web.CommandMapArgumentResolver" />
+		</mvc:argument-resolvers>
+	</mvc:annotation-driven>
 	
-	<!-- 전자정부프레임워크 샘플 설정 시작 -->
-    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
-        <property name="webBindingInitializer">
-            <bean class="kr.nwlle.cmmn.web.EgovBindingInitializer"/>
-        </property>
+    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver" />    
+    <!-- 쿠키를 이용한 Locale 이용시 <bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver"/> -->
+<!--     <bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+        <property name="paramName" value="language" />
     </bean>
+    
+    <bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+        <property name="paramName" value="language" />
+    </bean>
+    
+    <bean id="webLoggingInterceptor" class="kr.nwlle.cmmn.interceptor.WebLoggingInterceptor" />
+		    
     <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">
         <property name="interceptors">
             <list>
                 <ref bean="localeChangeInterceptor" />
+                <ref bean="webLoggingInterceptor" />
             </list>
         </property>
-    </bean>
+    </bean> -->
     
-    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver" />
-    
-    <!-- 쿠키를 이용한 Locale 이용시 <bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver"/> -->
-    <bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
-        <property name="paramName" value="language" />
-    </bean>
-
     <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
         <property name="defaultErrorView" value="cmmn/egovError"/>
         <property name="exceptionMappings">
@@ -56,13 +60,8 @@
         </property>
     </bean>    
     
-    <!-- <bean class="org.springframework.web.servlet.view.UrlBasedViewResolver" p:order="1"
-	    p:viewClass="org.springframework.web.servlet.view.JstlView"
-	    p:prefix="/WEB-INF/jsp/egovframework/example/" p:suffix=".jsp"/> -->
-	    
 	<!-- For Pagination Tag -->
     <bean id="imageRenderer" class="kr.nwlle.cmmn.web.EgovImgPaginationRenderer"/>
-
     <bean id="paginationManager" class="egovframework.rte.ptl.mvc.tags.ui.pagination.DefaultPaginationManager">
         <property name="rendererType">
             <map>
@@ -72,8 +71,7 @@
     </bean>
 	<!-- /For Pagination Tag -->
 	
-	<!-- <mvc:view-controller path="/cmmn/validator.do" view-name="cmmn/validator"/> -->
-	<!-- 전자정부프레임워크 샘플 설정 종료 -->    
+	<mvc:view-controller path="/cmmn/validator.do" view-name="cmmn/validator"/>
 
 	    
 	<!-- set view resolver -->
@@ -103,4 +101,22 @@
         </property>
 	</bean> 
     
+    <mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**"/>
+			<mvc:exclude-mapping path="/web/resources/**" />
+			<mvc:exclude-mapping path="/webadm/resources/**" />
+			<mvc:exclude-mapping path="/webadm/validator" />
+			<bean class="org.springframework.mobile.device.DeviceResolverHandlerInterceptor"/>
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/**"/>
+			<mvc:exclude-mapping path="/web/resources/**" />
+			<mvc:exclude-mapping path="/webadm/resources/**" />
+			<mvc:exclude-mapping path="/webadm/validator" />			
+			<bean id="webLoggingInterceptor" class="kr.nwlle.cmmn.interceptor.WebLoggingInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
+    
+    <mvc:default-servlet-handler />
 </beans>

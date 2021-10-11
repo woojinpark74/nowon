@@ -15,6 +15,7 @@
             <td width="100%" height="100%" align="center" valign="middle" style="padding-top: 150px;"><table border="0" cellspacing="0" cellpadding="0">
                     <tr>
                         <td class="<spring:message code='image.errorBg' />">
+                        	404 Not found
                             <span style="font-family: Tahoma; font-weight: bold; color: #000000; line-height: 150%; width: 440px; height: 70px;"></span>
                         </td>
                     </tr>
