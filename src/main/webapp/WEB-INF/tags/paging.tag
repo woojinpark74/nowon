@@ -1,4 +1,4 @@
-<%@ include file="/WEB-INF/views/include/taglibs.jsp"%>
+<%@ include file="/WEB-INF/jsp/include/taglibs.jsp"%>
 <%@ attribute name="pagedListHolder" required="true" type="kr.nwlle.cmmn.vo.Pagination" %>
 
 <c:if test="${pagedList.pageCount > 0}">

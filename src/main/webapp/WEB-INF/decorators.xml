@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<decorators defaultdir="/WEB-INF/views/layout">
+<decorators defaultdir="/WEB-INF/jsp/layout">
 
     <decorator name="defaultTheme" page="defaultTheme.jsp">
         <pattern>/</pattern>
