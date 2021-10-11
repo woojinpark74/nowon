@@ -1,0 +1,647 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd" version="2.0">
+
+	<description>JSTL 1.1 functions library</description>
+	<display-name>JSTL User functions</display-name>
+	<tlib-version>1.1</tlib-version>
+	<short-name>ufn</short-name>
+	<uri>http://java.sun.com/jsp/jstl/function</uri>
+
+	<function>
+		<description>
+			Get Code's Name by Code's Value
+		</description>
+		<name>getCodeName</name>
+		<function-class>kr.nwlle.cmmn.util.JSTLFunction</function-class>
+		<function-signature>java.lang.String getCodeName(java.lang.String, java.lang.String)</function-signature>
+		<example>
+			 ${ufn:getCodeName('code_group', 'code_value')}			
+		</example>
+	</function>
+	
+	<function>
+		<description>
+			Get Code's Etc by Code's Value
+		</description>
+		<name>getCodeEtc</name>
+		<function-class>kr.nwlle.cmmn.util.JSTLFunction</function-class>
+		<function-signature>java.lang.String getCodeEtc(java.lang.String, java.lang.String)</function-signature>
+		<example>
+			 ${ufn:getCodeEtc('code_group', 'code_value')}			
+		</example>
+	</function>
+	
+	<function>
+		<description>
+			Get Code's Name by Code's Value , return data is null then defalut string
+		</description>
+		<name>getNvlCodeName</name>
+		<function-class>kr.nwlle.cmmn.util.JSTLFunction</function-class>
+		<function-signature>java.lang.String getNvlCodeName(java.lang.String, java.lang.String, java.lang.String)</function-signature>
+		<example>
+			 ${ufn:getNvlCodeName('code_group', 'code_value', 'defaultStr')}			
+		</example>
+	</function>
+	
+	<function>
+		<description>
+			Get Code List
+		</description>
+		<name>getCodeList</name>
+		<function-class>kr.nwlle.cmmn.util.JSTLFunction</function-class>
+		<function-signature>java.lang.String getCodeList(java.lang.String)</function-signature>
+		<example>
+			 ${ufn:getCodeList('code_group')}			
+		</example>
+	</function>
+	
+	<function>
+		<description>
+			makeIdOptions
+		</description>
+		<name>makeIdOptions</name>
+		<function-class>kr.nwlle.cmmn.util.JSTLFunction</function-class>
+		<function-signature>java.lang.String makeIdOptions(java.lang.String, java.lang.String, java.lang.String)</function-signature>
+		<example>
+			 ${ufn:makeIdOptions(idAppr, defaultText, selectValue)}			
+		</example>
+	</function>
+	
+	<function>
+		<description>
+			makeAllIdOptions
+		</description>
+		<name>makeAllIdOptions</name>
+		<function-class>kr.nwlle.cmmn.util.JSTLFunction</function-class>
+		<function-signature>java.lang.String makeAllIdOptions(java.lang.String, java.lang.String)</function-signature>
+		<example>
+			 ${ufn:makeAllIdOptions(defaultText, selectValue)}			
+		</example>
+	</function>
+	
+	<function>
+		<description>
+			makeIdOptionsByBranch
+		</description>
+		<name>makeIdOptionsByBranch</name>
+		<function-class>kr.nwlle.cmmn.util.JSTLFunction</function-class>
+		<function-signature>java.lang.String makeIdOptionsByBranch(java.lang.String, java.lang.String, java.lang.String, java.lang.String)</function-signature>
+		<example>
+			 ${ufn:makeIdOptionsByBranch(idAppr, defaultText, selectValue, c3_branch)}			
+		</example>
+	</function>
+	
+	<function>
+		<description>
+			makeAllIdOptionsByBranch
+		</description>
+		<name>makeAllIdOptionsByBranch</name>
+		<function-class>kr.nwlle.cmmn.util.JSTLFunction</function-class>
+		<function-signature>java.lang.String makeAllIdOptionsByBranch(java.lang.String, java.lang.String, java.lang.String)</function-signature>
+		<example>
+			 ${ufn:makeAllIdOptionsByBranch(defaultText, selectValue, c3_branch)}			
+		</example>
+	</function>
+	
+	<function>
+	    <description>
+	      make options for selectBox
+	    </description>
+	    <name>makeOptions</name>
+	    <function-class>kr.nwlle.cmmn.util.JSTLFunction</function-class>
+	    <function-signature>java.lang.String makeOptions(java.lang.String, java.lang.String, java.lang.String)</function-signature>
+	    <example>
+	       ${ufn:makeOptions('code_group','default_text', 'code_value')}
+	    </example>  
+	</function>
+	
+	<function>
+	    <description>
+	      make options for selectBox
+	    </description>
+	    <name>makeOptions2</name>
+	    <function-class>kr.nwlle.cmmn.util.JSTLFunction</function-class>
+	    <function-signature>java.lang.String makeOptions(java.lang.String, java.lang.String, java.lang.String, java.lang.String)</function-signature>
+	    <example>
+	       ${ufn:makeOptions('code_group','default_text', 'code_value', 'type')}
+	    </example>  
+	</function>
+	
+	<function>
+	    <description>
+	      make options for MultipleSelectBox
+	    </description>
+	    <name>makeMultipleOptions</name>
+	    <function-class>kr.nwlle.cmmn.util.JSTLFunction</function-class>
+	    <function-signature>java.lang.String makeMultipleOptions(java.lang.String, java.lang.String)</function-signature>
+	    <example>
+	       ${ufn:makeMultipleOptions('code_group', 'code_value')}
+	    </example>
+	</function>
+	
+	<function>
+	    <description>
+	      make options for selectBox
+	    </description>
+	    <name>makeOptionsName</name>
+	    <function-class>kr.nwlle.cmmn.util.JSTLFunction</function-class>
+	    <function-signature>java.lang.String makeOptionsName(java.lang.String, java.lang.String, java.lang.String, java.lang.String)</function-signature>
+	    <example>
+	       ${ufn:makeOptionsName('code_group','default_text', 'code_name', "type")}
+	    </example>  
+	</function>
+	
+	<function>
+	    <description>
+	      make Goods options for selectBox
+	    </description>
+	    <name>makeGoodsOptions</name>
+	    <function-class>kr.nwlle.cmmn.util.JSTLFunction</function-class>
+	    <function-signature>java.lang.String makeGoodsOptions(java.lang.String, java.lang.String, java.lang.String)</function-signature>
+	    <example>
+	       ${ufn:makeGoodsOptions('default_text', 'code_value', 'type')}
+	    </example>  
+	</function>
+	
+	<function>
+		<description>
+			make options for selectBox
+		</description>
+		<name>makeOptionsType</name>
+		<function-class>kr.nwlle.cmmn.util.JSTLFunction</function-class>
+		<function-signature>java.lang.String makeOptions(java.lang.String, java.lang.String, java.lang.String, java.lang.String)</function-signature>
+		<example>
+			 ${ufn:makeOptionsType('code_group','default_text', 'code_value','type')}			
+		</example>
+	</function>	
+	
+	<function>
+	    <description>
+	      make options for MultipleSelectBox
+	    </description>
+	    <name>makeMultipleOptionsType</name>
+	    <function-class>kr.nwlle.cmmn.util.JSTLFunction</function-class>
+	    <function-signature>java.lang.String makeMultipleOptions(java.lang.String, java.lang.String, java.lang.String)</function-signature>
+	    <example>
+	       ${ufn:makeMultipleOptions('code_group', 'code_value', 'type')}
+	    </example>
+	</function>
+	
+	<function>
+		<description>
+			makeAgencyOptions
+		</description>
+		<name>makeAgencyOptions</name>
+		<function-class>kr.nwlle.cmmn.util.JSTLFunction</function-class>
+		<function-signature>java.lang.String makeAgencyOptions(java.lang.String, java.lang.String)</function-signature>
+		<example>
+			 ${ufn:makeAgencyOptions(defaultText, selectValue)}
+		</example>
+	</function>
+	
+	<function>
+		<description>
+			makeRadioAndCheckBoxs
+		</description>
+		<name>makeRadioAndCheckBoxs</name>
+		<function-class>kr.nwlle.cmmn.util.JSTLFunction</function-class>
+		<function-signature>java.lang.String makeRadioAndCheckBoxs(java.lang.String, java.lang.String, java.lang.String, java.lang.String, int)</function-signature>
+		<example>
+			 ${ufn:makeRadioAndCheckBoxs('code_group', 'name', 'type','checkValues', number)}			
+		</example>
+	</function>
+	
+	<function>
+		<description>
+			makeRadioAndCheckBoxsEvent
+		</description>
+		<name>makeRadioAndCheckBoxsEvent</name>
+		<function-class>kr.nwlle.cmmn.util.JSTLFunction</function-class>
+		<function-signature>java.lang.String makeRadioAndCheckBoxs(java.lang.String, java.lang.String, java.lang.String, java.lang.String, int, java.lang.String)</function-signature>
+		<example>
+			 ${ufn:makeRadioAndCheckBoxsEvent('code_group', 'name', 'type','checkValues', number, 'function')}			
+		</example>
+	</function>
+	
+	<function>
+		<description>
+			makeRadioAndCheckBoxsEventMode
+		</description>
+		<name>makeRadioAndCheckBoxsEventMode</name>
+		<function-class>kr.nwlle.cmmn.util.JSTLFunction</function-class>
+		<function-signature>java.lang.String makeRadioAndCheckBoxs(java.lang.String, java.lang.String, java.lang.String, java.lang.String, int, java.lang.String, java.lang.String)</function-signature>
+		<example>
+			 ${ufn:makeRadioAndCheckBoxsEventMode('code_group', 'name', 'type','checkValues', number, 'function', 'mode')}			
+		</example>
+	</function>
+	
+	<function>
+		<description>
+			makeGoodsTypeRadioAndCheckBoxs Event
+		</description>
+		<name>makeGoodsTypeRadioAndCheckBoxs</name>
+		<function-class>kr.nwlle.cmmn.util.JSTLFunction</function-class>
+		<function-signature>java.lang.String makeGoodsTypeRadioAndCheckBoxs(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, int, java.lang.String)</function-signature>
+		<example>
+			 ${ufn:makeGoodsTypeRadioAndCheckBoxs('cd_goods_tab','goods_type_comp', 'name', 'type','checkValues', number, 'function')}			
+		</example>
+	</function>
+	
+	<function>
+		<description>
+			makeCheckItem
+		</description>
+		<name>makeCheckItem</name>
+		<function-class>kr.nwlle.cmmn.util.JSTLFunction</function-class>
+		<function-signature>java.lang.String makeCheckItem(java.lang.String, java.lang.String)</function-signature>
+		<example>
+			${ufn:makeCheckItem('id_chk', 'no_apply')}
+		</example>
+	</function>
+	
+	<function>
+		<description>
+			makeCheckGroup
+		</description>
+		<name>makeCheckGroup</name>
+		<function-class>kr.nwlle.cmmn.util.JSTLFunction</function-class>
+		<function-signature>java.lang.String makeCheckGroup(java.lang.String, java.lang.String)</function-signature>
+		<example>
+			${ufn:makeCheckGroup('nm_group_chk', 'no_apply')}
+		</example>
+	</function>
+	
+	<function>
+	    <description>
+	      getAuth
+	    </description>
+	    <name>getAuth</name>
+	    <function-class>kr.nwlle.cmmn.util.JSTLFunction</function-class>
+	    <function-signature>java.lang.String getAuth(java.lang.String, java.lang.String)</function-signature>
+	    <example>
+	       ${ufn:getAuth('id_program','type')}
+	    </example>  
+	</function>
+	
+	<function>
+	    <description>
+	      target isAuth
+	    </description>
+	    <name>isAuth</name>
+	    <function-class>kr.nwlle.cmmn.util.JSTLFunction</function-class>
+	    <function-signature>java.lang.String isAuth(java.lang.String, java.lang.String, java.lang.String, java.lang.String, int)</function-signature>
+	    <example>
+	       ${ufn:isAuth('id_auth_target','cd_system','cd_auth_group','cd_auth_item',seq_order)}
+	    </example>  
+	</function>
+	
+	<function>
+		<description>
+			getUserInfo
+		</description>
+		<name>getUserInfo</name>
+		<function-class>kr.nwlle.cmmn.util.JSTLFunction</function-class>
+		<function-signature>java.lang.String getUserInfo(java.lang.String, java.lang.String)</function-signature>
+		<example>
+			 ${ufn:getUserInfo(id_user, type)}			
+		</example>
+	</function>
+	
+	<function>
+		<description>
+			Get CurrentDate
+		</description>
+		<name>getCurrentDate</name>
+		<function-class>kr.nwlle.cmmn.util.JSTLFunction</function-class>
+		<function-signature>java.lang.String getCurrentDate()</function-signature>
+		<example>
+			 ${ufn:getCurrentDate()}			
+		</example>
+	</function>
+	
+	<function>
+		<description>
+			getDayOfWeek
+		</description>
+		<name>getDayOfWeek</name>
+		<function-class>kr.nwlle.cmmn.util.JSTLFunction</function-class>
+		<function-signature>java.lang.String getDayOfWeek()</function-signature>
+		<example>
+			 ${ufn:getDayOfWeek()}			
+		</example>
+	</function>
+	
+	<function>
+		<description>
+			formatSsn
+		</description>
+		<name>formatSsn</name>
+		<function-class>kr.nwlle.cmmn.util.JSTLFunction</function-class>
+		<function-signature>java.lang.String formatSsn(java.lang.String)</function-signature>
+		<example>
+			 ${ufn:formatSsn(value)}			
+		</example>
+	</function>
+	
+	<function>
+		<description>
+			formatNumber
+		</description>
+		<name>formatNumber</name>
+		<function-class>kr.nwlle.cmmn.util.JSTLFunction</function-class>
+		<function-signature>java.lang.String formatNumber(java.lang.String)</function-signature>
+		<example>
+			 ${ufn:formatNumber(value)}			
+		</example>
+	</function>
+	
+	<function>
+		<description>
+			formatTelNo
+		</description>
+		<name>formatTelNo</name>
+		<function-class>kr.nwlle.cmmn.util.JSTLFunction</function-class>
+		<function-signature>java.lang.String formatTelNo(java.lang.String)</function-signature>
+		<example>
+			 ${ufn:formatTelNo(value)}			
+		</example>
+	</function>
+	
+	<function>
+		<description>
+			formatDate
+		</description>
+		<name>formatDate</name>
+		<function-class>kr.nwlle.cmmn.util.JSTLFunction</function-class>
+		<function-signature>java.lang.String formatDate(java.lang.String)</function-signature>
+		<example>
+			 ${ufn:formatDate(ymd)}			
+		</example>
+	</function>
+	
+	<function>
+		<description>
+			formatKorDate
+		</description>
+		<name>formatKorDate</name>
+		<function-class>kr.nwlle.cmmn.util.JSTLFunction</function-class>
+		<function-signature>java.lang.String formatKorDate(java.lang.String)</function-signature>
+		<example>
+			 ${ufn:formatKorDate(ymd)}			
+		</example>
+	</function>
+	
+	<function>
+		<description>
+			formatShortDate
+		</description>
+		<name>formatShortDate</name>
+		<function-class>kr.nwlle.cmmn.util.JSTLFunction</function-class>
+		<function-signature>java.lang.String formatShortDate(java.lang.String)</function-signature>
+		<example>
+			 ${ufn:formatShortDate(ymd)}			
+		</example>
+	</function>
+	
+	<function>
+		<description>
+			formatTime
+		</description>
+		<name>formatTime</name>
+		<function-class>kr.nwlle.cmmn.util.JSTLFunction</function-class>
+		<function-signature>java.lang.String formatTime(java.lang.String)</function-signature>
+		<example>
+			 ${ufn:formatTime(time)}			
+		</example>
+	</function>
+	
+	<function>
+		<description>
+			isApprAuth
+		</description>
+		<name>isApprAuth</name>
+		<function-class>kr.nwlle.cmmn.util.JSTLFunction</function-class>
+		<function-signature>java.lang.String isApprAuth(java.lang.String, java.lang.String)</function-signature>
+		<example>
+			 ${ufn:isApprAuth(aa,bb)}			
+		</example>
+	</function>
+	
+	<function>
+		<description>
+			getGoodsDetail
+		</description>
+		<name>getGoodsDetail</name>
+		<function-class>kr.nwlle.cmmn.util.JSTLFunction</function-class>
+		<function-signature>java.lang.String getGoodsDetail(java.lang.String, java.lang.String)</function-signature>
+		<example>
+			 ${ufn:getGoodsDetail(cd_goods, type)}			
+		</example>
+	</function>
+	
+	<function>
+		<description>
+			getApplyPath
+		</description>
+		<name>getApplyPath</name>
+		<function-class>kr.nwlle.cmmn.util.JSTLFunction</function-class>
+		<function-signature>java.lang.String getApplyPath(java.lang.String)</function-signature>
+		<example>
+			 ${ufn:getApplyPath(path)}			
+		</example>
+	</function>
+	
+	<function>
+		<description>
+			make options for selectBox
+		</description>
+		<name>makeOptionsTypeEmp</name>
+		<function-class>kr.nwlle.cmmn.util.JSTLFunction</function-class>
+		<function-signature>java.lang.String makeOptionsEmp(java.lang.String, java.lang.String, java.lang.String, java.lang.String)</function-signature>
+		<example>
+			 ${ufn:makeOptionsTypeEmp('code_group','default_text', 'code_value','i')}			
+		</example>
+	</function>	
+	<function>
+ 		<description>
+ 			quickYmdFromTo
+ 		</description>
+ 		<name>quickYmdFromTo</name>
+ 		<function-class>kr.nwlle.cmmn.util.JSTLFunction</function-class>
+ 		<function-signature>java.lang.String quickYmdFromTo(java.lang.String, java.lang.String, java.lang.String)</function-signature>
+ 		<example>
+ 			 ${ufn:quickYmdFromTo(date, from, to)}			
+ 		</example>
+ 	</function>
+ 	
+ 	<function>
+ 		<description>
+ 			quickYmd
+ 		</description>
+ 		<name>quickYmd</name>
+ 		<function-class>kr.nwlle.cmmn.util.JSTLFunction</function-class>
+ 		<function-signature>java.lang.String quickYmd(java.lang.String, java.lang.String)</function-signature>
+ 		<example>
+ 			 ${ufn:quickYmd(date, ymd)}			
+ 		</example>
+ 	</function>
+ 	
+ 	<function>
+		<description>
+			formatMaskHp
+		</description>
+		<name>formatMaskHp</name>
+		<function-class>kr.nwlle.cmmn.util.JSTLFunction</function-class>
+		<function-signature>java.lang.String formatMaskHp(java.lang.String)</function-signature>
+		<example>
+			 ${ufn:formatMaskHp(value)}			
+		</example>
+	</function>
+	
+	<function>
+		<description>
+			getAge
+		</description>
+		<name>getAge</name>
+		<function-class>kr.nwlle.cmmn.util.JSTLFunction</function-class>
+		<function-signature>java.lang.String getAge(java.lang.String)</function-signature>
+		<example>
+			 ${ufn:getAge('9301181')}			
+		</example>
+	</function>
+	
+	<function>
+		<description>
+			getBoardInfo
+		</description>
+		<name>getBoardInfo</name>
+		<function-class>kr.nwlle.cmmn.util.JSTLFunction</function-class>
+		<function-signature>java.lang.String getBoardInfo(java.lang.String, java.lang.String)</function-signature>
+		<example>
+			 ${ufn:getBoardInfo(id_board, type)}
+		</example>
+	</function>
+	
+	<function>
+		<description>
+			getFormattedTime
+		</description>
+		<name>getFormattedTime</name>
+		<function-class>kr.nwlle.cmmn.util.JSTLFunction</function-class>
+		<function-signature>java.lang.String getFormattedTime(java.lang.String,java.lang.String,java.lang.String)</function-signature>
+		<example>
+			 ${getFormattedTime(frForm, toForm, thisDate)}			
+		</example>
+	</function>
+	
+	<function>
+		<description>
+			makeBoardOptions
+		</description>
+		<name>makeBoardOptions</name>
+		<function-class>kr.nwlle.cmmn.util.JSTLFunction</function-class>
+		<function-signature>java.lang.String makeBoardOptions(java.lang.String, java.lang.String)</function-signature>
+		<example>
+			 ${ufn:makeBoardOptions(defaultText, selectValue)}
+		</example>
+	</function>
+	
+	<function>
+		<description>
+			getSummaryContent
+		</description>
+		<name>getSummaryContent</name>
+		<function-class>kr.nwlle.cmmn.util.JSTLFunction</function-class>
+		<function-signature>java.lang.String getSummaryContent(java.lang.String, int)</function-signature>
+		<example>
+			 ${ufn:getSummaryContent(content, size)}			
+		</example>
+	</function>
+	
+	<function>
+		<description>
+			getAgency
+		</description>
+		<name>getAgency</name>
+		<function-class>kr.nwlle.cmmn.util.JSTLFunction</function-class>
+		<function-signature>java.lang.String getAgency(java.lang.String, java.lang.String)</function-signature>
+		<example>
+			 ${ufn:getAgency(id_agency, type)}			
+		</example>
+	</function>
+	
+	<function>
+		<description>
+			getAgencyUser
+		</description>
+		<name>getAgencyUser</name>
+		<function-class>kr.nwlle.cmmn.util.JSTLFunction</function-class>
+		<function-signature>java.lang.String getAgencyUser(java.lang.String, java.lang.String)</function-signature>
+		<example>
+			 ${ufn:getAgencyUser(id_emp, type)}			
+		</example>
+	</function>
+	
+	<function>
+		<description>
+			getNumberOfMonth
+		</description>
+		<name>getNumberOfMonth </name>
+		<function-class>kr.nwlle.cmmn.util.JSTLFunction</function-class>
+		<function-signature>java.lang.String getNumberOfMonth(java.lang.String)</function-signature>
+		<example>
+			 ${ufn:getNumberOfMonth(yyyymm)}			
+		</example>
+	</function>
+	
+	<function>
+		<description>
+			makeCheckBoxsByTerms
+		</description>
+		<name>makeCheckBoxsByTerms</name>
+		<function-class>kr.nwlle.cmmn.util.JSTLFunction</function-class>
+		<function-signature>java.lang.String makeCheckBoxsByTerms(java.lang.String, java.lang.String, int)</function-signature>
+		<example>
+			 ${ufn:makeCheckBoxsByTerms('name', 'checkValues', number)}			
+		</example>
+	</function>
+	
+	<function>
+		<description>
+			getEmailPart
+		</description>
+		<name>getEmailPart</name>
+		<function-class>kr.nwlle.cmmn.util.JSTLFunction</function-class>
+		<function-signature>java.lang.String getEmailPart(java.lang.String, int)</function-signature>
+		<example>
+			 ${getEmailPart('email', number)}			
+		</example>
+	</function>
+	
+	<function>
+		<description>
+			getImageList
+		</description>
+		<name>getImageList</name>
+		<function-class>kr.nwlle.cmmn.util.JSTLFunction</function-class>
+		<function-signature>java.util.List getImageList(java.lang.String)</function-signature>
+		<example>
+			 ${getEmailPart('email', number)}			
+		</example>
+	</function>
+	
+	<function>
+		<description>
+			getFileNameFromUrl
+		</description>
+		<name>getFileNameFromUrl</name>
+		<function-class>kr.nwlle.cmmn.util.JSTLFunction</function-class>
+		<function-signature>java.lang.String getFileNameFromUrl(java.lang.String)</function-signature>
+		<example>
+			 ${ufn:getFileNameFromUrl(content)}			
+		</example>
+	</function>
+	
+</taglib>	

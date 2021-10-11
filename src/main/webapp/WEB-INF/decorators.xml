@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<decorators defaultdir="/WEB-INF/views/layout">
+
+    <decorator name="defaultTheme" page="defaultTheme.jsp">
+        <pattern>/</pattern>
+    </decorator>
+
+	<decorator name="egovSampleTheme" page="egovSampleTheme.jsp">
+        <pattern>/egov*.do</pattern>
+    </decorator>
+    
+    <decorator name="gateTheme" page="gateTheme.jsp">
+        <pattern>/gate.do</pattern>
+    </decorator>
+        
+    <decorator name="blankTheme" page="blankTheme.jsp">
+        <pattern>/modal/*.do</pattern>
+    </decorator>
+    
+    <decorator name="popUpTheme" page="popUpTheme.jsp">
+        <pattern>/*/*Popup.do</pattern> 
+    </decorator>
+    
+    <!-- sitemesh 적용 예외 URL을 아래에 추가해 주세요. -->
+    <excludes>
+        <pattern>*Ajax*</pattern>
+        <pattern>*.json</pattern>
+    </excludes>
+    
+</decorators>

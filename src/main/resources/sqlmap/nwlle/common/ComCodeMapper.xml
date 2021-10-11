@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.nwlle.common.mapper.ComCodeMapper">
+
+	<select id="getComCode" parameterType="comCodeVO" resultType="comCodeVO">
+		/*kr.nwlle.common.mapper.ComCodeMapper.getComCode*/
+	    SELECT * FROM TB_COM_CODE 
+	    	WHERE GRP_CD = #{grpCd} 
+	    		AND CD = #{cd}
+	    		<if test='@kr.MybatisUtil@isNotEmpty(useYn)'>
+	    		AND USE_YN = #{useYn}
+	    		</if>
+	</select>
+	
+	<select id="getComCodeList2" parameterType="comCodeVO" resultType="comCodeVO">
+		/*kr.nwlle.common.mapper.ComCodeMapper.getComCodeList2*/
+		SELECT * 
+		FROM TB_COM_CODE 
+		WHERE grpCd = #{grpCd} 
+		AND CD != ' '
+		<if test='@kr.MybatisUtil@isNotEmpty(cdNm)'>
+			AND CD_NM LIKE '%'+#{cdNm}+'%'
+		</if> 
+		ORDER BY SORT_NO
+	</select>
+	
+	<select id="getComCodeList" parameterType="comCodeVO" resultType="comCodeVO">
+		/*kr.nwlle.common.mapper.ComCodeMapper.getComCodeList*/
+		SELECT * 
+		FROM TB_COM_CODE 
+		<where>
+			<if test='@kr.MybatisUtil@isNotEmpty(grpCd)'>
+				AND GRP_CD = #{grpCd}
+			</if>
+			<if test='@kr.MybatisUtil@isNotEmpty(cd)'>
+				AND CD = #{cd}
+			</if>
+			<if test='@kr.MybatisUtil@isNotEmpty(cdNm)'>
+				AND CD_NM = #{cdNm}
+			</if>
+			<if test='@kr.MybatisUtil@isNotEmpty(grpCdYn)'>
+				<choose>
+					<when test='"Y".equals(grpCdYn)'>
+						AND CD = ' '
+					</when>
+					<otherwise>
+						AND CD != ' '
+						<!-- <if test='@kr.MybatisUtil@isNotEmpty(sel_detail)'>
+							AND ${sel_detail} = #{txt_detail}
+						</if> -->
+					</otherwise>
+				</choose>
+				
+				<!-- <if test='@kr.MybatisUtil@isNotEmpty(sel_detail)'>
+					AND ${sel_detail} LIKE '%'||#{txt_detail}||'%'
+				</if> -->
+			</if>
+			<if test='@kr.MybatisUtil@isNotEmpty(etc)'>
+				AND ETC = #{etc}
+			</if>
+		</where>
+		ORDER BY GRP_CD, SORT_NO
+	</select>
+	
+	<update id="mergeComCode" parameterType="comCodeVO">
+		/*kr.nwlle.common.mapper.ComCodeMapper.mergeComCode*/	
+		INSERT INTO TB_COM_CODE
+			       (  GRP_CD
+				, CD
+				, CD_NM
+				, ETC
+				, SORT_NO
+				, USE_YN
+				, REG_ID
+				, REG_DT )
+		VALUES(	  #{grpCd}
+			    , #{cd}
+			    , #{cdNm}
+			    , #{etc}
+			    , #{sortNo}
+			    , #{useYn,}
+			    , #{regId}
+			    , NOW() )
+	        ON DUPLICATE KEY  
+	     UPDATE 
+	             CD_NM = #{cdNm}
+			, ETC = #{etc}
+			, SORT_NO = #{sortNo}
+			, USE_YN = #{useYn}
+			, MOD_ID = #{modId}
+			, MOD_DT = NOW()
+	</update>
+	
+	<delete id="deleteComCode" parameterType="comCodeVO">
+		/*kr.nwlle.common.mapper.ComCodeMapper.deleteComCode*/
+		DELETE FROM TB_COM_CODE
+		 WHERE GRP_CD = #{grpCd}
+		<if test='@kr.MybatisUtil@isNotEmpty(cd)'>
+			AND CD = #{cd}
+		</if>
+	</delete>
+	
+	<!-- 코드그룹의 SORT_NO,CD 의 최대값을 가져온다  -->
+	<select id="getMaxComCode" parameterType="comCodeVO" resultType="comCodeVO">
+		/*kr.nwlle.common.mapper.ComCodeMapper.getMaxComCode*/
+		SELECT 
+			grpCd
+			, MAX(SORT_NO) AS SORT_NO
+			, MAX(CD) AS CD
+		FROM TB_COM_CODE
+		WHERE GRP_CD=#{grpCd}
+		GROUP BY GRP_CD 
+	</select>
+	
+	<!-- 코드그룹의 SORT_NO를 바꾼다. -->
+	<update id="updateSortNo" parameterType="comCodeVO">
+		/*kr.nwlle.common.mapper.ComCodeMapper.updateSortNo*/
+		UPDATE TB_COM_CODE SET SORT_NO = #{sortNo}
+		 WHERE GRP_CD = #{grpCd}
+			   AND CD = #{cd}
+	</update>
+	
+	<select id="getLastInsertId" resultType="int">
+        SELECT LAST_INSERT_ID()
+    </select>
+
+</mapper>      
