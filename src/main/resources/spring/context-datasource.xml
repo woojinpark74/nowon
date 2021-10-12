@@ -4,53 +4,33 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
         http://www.springframework.org/schema/jdbc  http://www.springframework.org/schema/jdbc/spring-jdbc-4.0.xsd">
 	
-	
-	<bean id="egov.propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="locations">
-            <list>            
-            	<value>classpath:/property/globals_${spring.profiles.active}.properties</value>
-            </list>
-        </property>
-    </bean>
+	<!-- <context:property-placeholder location="classpath:/property/globals_${spring.profiles.myactive}.properties"/> -->
 	
 	<!-- 테스트 실행용 --> 
-	<jdbc:embedded-database id="dataSource" type="HSQL">
+	<!-- <jdbc:embedded-database id="dataSource" type="HSQL">
 		<jdbc:script location= "classpath:/db/sampledb.sql"/>
-	</jdbc:embedded-database>
+	</jdbc:embedded-database> -->
 	
 	
-    <!-- <beans profile="maria">
+	<!-- mariaDB -->
+	<beans profile="maria">
 	
 		<bean id="dataSourceSpied" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close"> 
 			<property name="driverClassName" value="${Globals.maria.DriverClassName}"/> 
 			<property name="url" value="${Globals.maria.Url}"/> 
 			<property name="username" value="${Globals.maria.UserName}"/> 
 			<property name="password" value="#{egovEnvCryptoService.getPassword()}"/> 
-			
-			<property name="driverClassName" value="#{prop['jdbc.driverClassName']}" />
-			<property name="url" value="#{prop['jdbc.url']}" />
-			<property name="username" value="#{prop['jdbc.username']}" />
-			<property name="password" value="#{prop['jdbc.password']}" />
-			<property name="maxActive" value="#{prop['jdbc.maxActive']}" />
-			<property name="maxIdle" value="#{prop['jdbc.maxIdle']}" /> 
-			<property name="poolPreparedStatements" value="true" />
-			<property name="validationQuery" value="select 0" />
-			<property name="testOnBorrow" value="true" />
-			<property name="maxWait" value="60000" />
-			<property name="logAbandoned" value="true" />
-			<property name="removeAbandoned" value="true" />
-			<property name="removeAbandonedTimeout" value="60" />
 		</bean> 
 		
-		<bean id="dataSource" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
-	        <constructor-arg ref="dataSourceSpied" />
-	        <property name="logFormatter">
-	            <bean class="net.sf.log4jdbc.tools.Log4JdbcCustomFormatter">
-	                <property name="loggingType" value="MULTI_LINE" />
-	                <property name="sqlPrefix" value="SQL         :  "/>
-	            </bean>
-	        </property>
-	    </bean>
+		<bean id="dataSource" class="kr.nwlle.cmmn.log.Log4jdbcProxyDataSource"> 
+			<constructor-arg ref="dataSourceSpied" />
+			<property name="logFormatter"> 
+				<bean class="kr.nwlle.cmmn.log.Log4JdbcCustomFormatter">
+					<property name="loggingType" value="MULTI_LINE" />
+					<property name="sqlPrefix" value=""/>
+				</bean>
+			</property>
+		</bean>
 		
 		<bean id="dataSourceSMS" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
 			<property name="driverClassName" value="${Globals.mysqlSMS.DriverClassName}"/>
@@ -59,6 +39,6 @@
 			<property name="password" 	value="${Globals.mysqlSMS.Password}"/>
 		</bean>		
 		
-	</beans>	 -->
+	</beans>
     
 </beans>

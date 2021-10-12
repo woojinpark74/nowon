@@ -21,14 +21,18 @@
 	</listener>
 	<context-param>
 		<param-name>logbackConfigLocation</param-name>
-		<param-value>classpath:logback_${spring.profiles.active}.xml</param-value>
+		<param-value>classpath:logback_${spring.profiles.myactive}.xml</param-value>
 	</context-param>
 	
 	<listener>
 		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
 	</listener>
 	
-	<!-- 한 유저가 다른 브라우저로 동시 로그인하는 것을 막음 -->
+	<listener>
+		<listener-class>kr.nwlle.cmmn.config.ProfileActiveSetContextListener</listener-class>
+	</listener>	
+	
+	<!-- 한 유저가 다른 브라우저로 동시 로그인하는 것을 막음 . EgovWebApplicationInitializer 참고 -->
     <!-- <listener>
 		<listener-class>org.springframework.security.web.session.HttpSessionEventPublisher</listener-class>
 	</listener> -->
@@ -77,7 +81,6 @@
 		<url-pattern>*.do</url-pattern>
 		<url-pattern>*.json</url-pattern>
 	</filter-mapping>
-    
 
     <!-- ================= JSP Config ================= -->
 	<jsp-config>

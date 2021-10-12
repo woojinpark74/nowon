@@ -23,7 +23,7 @@
     <!-- CommandMapArgumentResolver -->
     <mvc:annotation-driven >
 		<mvc:argument-resolvers>
-			<bean class="kr.nwlle.cmmn.web.CommandMapArgumentResolver" />
+			<bean class="kr.nwlle.cmmn.config.CommandMapArgumentResolver" />
 		</mvc:argument-resolvers>
 	</mvc:annotation-driven>
 	

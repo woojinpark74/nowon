@@ -1,4 +1,4 @@
-package kr.nwlle.cmmn.web;
+package kr.nwlle.cmmn.config;
 
 /**
  * CommandMap 객체에 담은 resolver

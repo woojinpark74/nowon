@@ -10,7 +10,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package kr.nwlle.cmmn.web;
+package kr.nwlle.cmmn.config;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -26,19 +26,13 @@ import lombok.extern.slf4j.Slf4j;
 
 /**
  * @Class Name : EgovBindingInitializer.java
- * @Description : EgovBindingInitializer Class
- * @Modification Information
- * @
- *   @ 수정일 수정자 수정내용
- *   @ --------- --------- -------------------------------
- *   @ 2009.03.16 최초생성
- * @author 개발프레임웍크 실행환경 개발팀
- * @since 2009. 03.16
+ * @Description : 자세한 클래스 설명
+ * @author woojinp@legitsys.co.kr
+ * @since 2021. 10. 12.
  * @version 1.0
  * @see
- *      Copyright (C) by MOPAS All right reserved.
+ *      Copyright(c) 2021 HISCO. All rights reserved
  */
-
 @Slf4j
 public class EgovBindingInitializer implements WebBindingInitializer {
 

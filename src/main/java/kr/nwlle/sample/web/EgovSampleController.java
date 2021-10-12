@@ -77,6 +77,10 @@ public class EgovSampleController {
         model.asMap().clear();
         model.addAttribute("commandMap", commandMap);
         model.addAttribute("sampleVO", new SampleDefaultVO());
+
+        log.debug("profiles = {}", CommonUtil.getProfileList());
+        log.debug("pageUnit = {}", pageUnit);
+
         return "json";
     }
 
